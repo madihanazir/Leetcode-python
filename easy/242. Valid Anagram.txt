@@ -1,0 +1,17 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s)!= len(t):
+            return False
+        s_s= {}
+        t_t={}
+        for i in s:
+            if i in s_s:
+                s_s[i]+=1
+            else:
+                s_s[i]=1
+        for j in t:
+            if j in t_t:
+                t_t[j]+=1
+            else:
+                t_t[j]=1
+        return s_s == t_t 
