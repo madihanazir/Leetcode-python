@@ -1,0 +1,30 @@
+ class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def add_two_numbers(l1, l2):
+    result = ListNode(0)  # Dummy node to start the result list
+    ptr = result
+    carry = 0  # Initialize carry to 0
+
+    while l1 is not None or l2 is not None:
+        sum = carry  # Start with the carry
+
+        if l1 is not None:  # Add value from the first list
+            sum += l1.val
+            l1 = l1.next
+
+        if l2 is not None:  # Add value from the second list
+            sum += l2.val
+            l2 = l2.next
+
+        carry = sum // 10  # Calculate carry
+        sum = sum % 10  # Extract the last digit for the node value
+        ptr.next = ListNode(sum)  # Create a new node with the sum
+        ptr = ptr.next  # Move the pointer
+
+    if carry == 1:  # If there's a leftover carry, create a new node
+        ptr.next = ListNode(1)
+
+    return result.next 
